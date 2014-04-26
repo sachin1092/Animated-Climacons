@@ -16,6 +16,18 @@ public class Main extends Activity {
 		LayoutParams lp = new LayoutParams((int) (getResources()
 				.getDisplayMetrics().widthPixels * 0.45), (int) (getResources()
 				.getDisplayMetrics().widthPixels * 0.45));
+		
+		HazeSunIV hsiv = new HazeSunIV(getBaseContext(), (int) (getResources()
+				.getDisplayMetrics().widthPixels * 0.35), (int) (getResources()
+				.getDisplayMetrics().widthPixels * 0.35));
+		hsiv.setLayoutParams(lp);
+		fl.addView(hsiv);
+
+		HazeMoonIV hmiv = new HazeMoonIV(getBaseContext(), (int) (getResources()
+				.getDisplayMetrics().widthPixels * 0.35), (int) (getResources()
+				.getDisplayMetrics().widthPixels * 0.35));
+		hmiv.setLayoutParams(lp);
+		fl.addView(hmiv);
 
 		FogSunIV fsiv = new FogSunIV(getBaseContext(), (int) (getResources()
 				.getDisplayMetrics().widthPixels * 0.35), (int) (getResources()

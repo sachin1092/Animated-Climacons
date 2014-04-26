@@ -78,6 +78,10 @@ public class FogMoonIV extends ImageView {
 		pm2 = new PathMeasure(path2, false);
 		pm3 = new PathMeasure(path3, false);
 		len = pm1.getLength() / 100;
+		
+		mPaint1.setAlpha(60);
+		mPaint2.setAlpha(150);
+		mPaint3.setAlpha(40);
 
 		sun = Bitmap.createScaledBitmap(sun, (int) (width * 0.35),
 				(int) (height * 0.35), true);
@@ -94,9 +98,13 @@ public class FogMoonIV extends ImageView {
 		canvas.drawBitmap(cloud, (width - cloud.getWidth()) / 2,
 				(height - cloud.getHeight()) / 2, mPaint);
 
-		mPaint1.setAlpha(setval(curr1));
-		mPaint2.setAlpha(setval(curr2));
-		mPaint3.setAlpha(setval(curr3));
+		inc1 = setinc(mPaint1.getAlpha(), inc1);
+		inc2 = (setinc(mPaint2.getAlpha(), inc2));
+		inc3 = (setinc(mPaint3.getAlpha(), inc3));
+
+		mPaint1.setAlpha(setval(mPaint1.getAlpha(), inc1));
+		mPaint2.setAlpha(setval(mPaint2.getAlpha(), inc2));
+		mPaint3.setAlpha(setval(mPaint3.getAlpha(), inc3));
 
 		pm1.getPosTan((float) (len * curr1), pts, tan);
 		canvas.drawBitmap(drop, pts[0] - drop.getWidth() / 2,
@@ -122,15 +130,24 @@ public class FogMoonIV extends ImageView {
 
 	}
 
-	private int setval(float curr) {
+	boolean inc1 = true, inc2 = true, inc3 = true;
+
+	boolean setinc(int val, boolean b) {
+		if (val == 80)
+			return true;
+
+		if (val == 250)
+			return false;
+		return b;
+	}
+
+	private int setval(int curr, boolean inc) {
 		int val = 0;
-		if (curr <= 50) {
-			val = (int) (curr * 5.1);
-		} else {
-			val = (int) ((100 - curr) * 5.1);
-			if (val == 0)
-				val = 100;
-		}
+		if (inc)
+			val = curr + 1;
+		else
+			val = curr - 1;
+
 		return val;
 	}
 

@@ -115,9 +115,9 @@ public class HailIV extends ImageView {
 		canvas.drawBitmap(cloud, (width - cloud.getWidth()) / 2,
 				(height - cloud.getHeight()) / 2, mPaint);
 
-		curr1 += 3;
+		curr1 += 4;
 		curr2 += 2;
-		curr3 += 3;
+		curr3 += 4;
 
 		curr1 = check(curr1);
 		curr2 = check(curr2);
@@ -149,7 +149,7 @@ public class HailIV extends ImageView {
 	}
 
 	float check(float i) {
-		if (i >= 99 && i < 103)
+		if (i >= 99 && i < 104)
 			return 0;
 		return i;
 	}
